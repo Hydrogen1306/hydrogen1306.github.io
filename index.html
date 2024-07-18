@@ -583,7 +583,122 @@
 <!--<< 自己的音乐 >>-->
  
 
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>响应式分页表格</title>
+</head>
+<body>
+    <section class="award__section">
+        <div class="container">
+            <span class="table__title" style="font-size: 32px; font-weight: bold; color:cyan;">
+                自己摸的钢琴 
+            </span>
 
+            <!-- 表格 -->
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>标题</th>
+                            <th>描述</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- 表格内容将通过 JavaScript 动态生成 -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 分页 -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled" id="prevPage">
+                        <a class="page-link" href="#" tabindex="-1">上一页</a>
+                    </li>
+                    <!-- 分页链接将通过 JavaScript 动态生成 -->
+                    <li class="page-item disabled" id="nextPage">
+                        <a class="page-link" href="#">下一页</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- 引入 Bootstrap JS 和依赖的 jQuery 和 Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 模拟数据
+        var data = [
+            { title: "《坤和坎》", description: "游戏一二章的概念曲", url: "/static/music/2_坤.mp3" },
+            { title: "《叶隙流光》", description: "儿时的金色庭院", url: "/static/music/2_叶隙流光.mp3" },
+            { title: "《日疡》", description: "死去的太阳下", url: "/static/music/1_日疡.mp3" },
+            { title: "《石泪》", description: "英勇的雕像", url: "/static/music/3_石像.mp3" },
+            // 更多数据...
+        ];
+
+        var currentPage = 1;
+        var itemsPerPage = 5; // 每页显示的条目数
+
+        function displayTable() {
+            var start = (currentPage - 1) * itemsPerPage;
+            var end = start + itemsPerPage;
+            var tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = ''; // 清空当前表格内容
+
+            for (var i = start; i < end && i < data.length; i++) {
+                var item = data[i];
+                var row = `<tr>
+                    <td>${item.title}</td>
+                    <td>${item.description}</td>
+                    <td><audio controls><source src="${item.url}" type="audio/mpeg">Your browser does not support the audio element.</audio></td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            }
+        }
+
+        function updatePagination() {
+            var prevPage = document.getElementById('prevPage');
+            var nextPage = document.getElementById('nextPage');
+
+            prevPage.classList.remove('disabled');
+            nextPage.classList.remove('disabled');
+
+            if (currentPage === 1) {
+                prevPage.classList.add('disabled');
+            }
+
+            if (currentPage * itemsPerPage >= data.length) {
+                nextPage.classList.add('disabled');
+            }
+        }
+
+        document.getElementById('prevPage').addEventListener('click', function() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayTable();
+                updatePagination();
+            }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', function() {
+            if (currentPage * itemsPerPage < data.length) {
+                currentPage++;
+                displayTable();
+                updatePagination();
+            }
+        });
+
+        // 初始显示
+        displayTable();
+        updatePagination();
+    </script>
+</body>
+</html>
 
 
 
