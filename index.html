@@ -634,15 +634,31 @@
     <script>
         // 模拟数据
         var data = [
-            { title: "《坤和坎》", description: "游戏一二章的概念曲", url: "/static/music/2_坤.mp3" },
-            { title: "《叶隙流光》", description: "儿时的金色庭院", url: "/static/music/2_叶隙流光.mp3" },
-            { title: "《日疡》", description: "死去的太阳下", url: "/static/music/1_日疡.mp3" },
-            { title: "《石泪》", description: "英勇的雕像", url: "/static/music/3_石像.mp3" },
+            {
+                title: "《坤和坎》",
+                description: "游戏一二章的概念曲，旋律我抄我自己，故不赘述（反正游戏情节也得写）",
+                url: "/static/music/2_坤.mp3"
+            },
+            {
+                title: "《叶隙流光》",
+                description: "想念儿时的金色庭院，墨绿肥厚的叶子中间阳光穿过，叶影斑驳。灰黄的墙边，懒洋洋趴满一片的爬山虎，猫儿在墙角蜷缩着，背上的毛随风起伏。那时的夏天，是自由；如今，是离别。(*´_ゝ｀)<br>p.s.和弦用的最成功的一集",
+                url: "/static/music/2_叶隙流光.mp3"
+            },
+            {
+                title: "《日疡》",
+                description: "死去的太阳下，昏黄的天空和燥热的空气，无尽的柏油路，一摞摞的工厂。少女在终末的世界里，不知驶向何方。",
+                url: "/static/music/1_日疡.mp3"
+            },
+            {
+                title: "《石泪》",
+                description: "英勇的，歌颂的，神圣的，雕像。直到千年后，大雨冲刷着死去的城，石头留下了泪。",
+                url: "/static/music/3_石像.mp3"
+            },
             // 更多数据...
         ];
 
         var currentPage = 1;
-        var itemsPerPage = 5; // 每页显示的条目数
+        var itemsPerPage = 3; // 每页显示的条目数
 
         function displayTable() {
             var start = (currentPage - 1) * itemsPerPage;
@@ -654,7 +670,16 @@
                 var item = data[i];
                 var row = `<tr>
                     <td>${item.title}</td>
-                    <td>${item.description}</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${i}" data-bs-toggle="dropdown" aria-expanded="false">
+                                描述
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton${i}">
+                                <li>${item.description}</li>
+                            </ul>
+                        </div>
+                    </td>
                     <td><audio controls><source src="${item.url}" type="audio/mpeg">Your browser does not support the audio element.</audio></td>
                 </tr>`;
                 tableBody.innerHTML += row;
@@ -702,201 +727,7 @@
 
 
 
-
- <!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 引入 Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>响应式可折叠表格</title>
-</head>
-<body>
-    <section class="award__section">
-        <div class="container">
-            <span class="table__title" style="font-size: 32px; font-weight: bold; color:cyan;">
-                自己摸的钢琴 
-            </span>
-
-            <div class="award__wraper" data-aos="fade-up" data-aos-duration="2000">
-                <!-- 开始 Accordion 组件 -->
-                <div class="accordion" id="accordionExample">
-          <!-- 坤和坎 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading坤坎">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse坤坎" aria-expanded="true" aria-controls="collapse坤坎">
-                                《坤和坎》
-                            </button>
-                        </h2>
-                        <div id="collapse坤坎" class="accordion-collapse collapse" aria-labelledby="heading坤坎" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div>
-                                    <audio controls>
-                                        <source src="/static/music/2_坤.mp3" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>
-                                    <audio controls>
-                                        <source src="/static/music/2_坎.mp3" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>
-                                </div>
-                                <div class="ptext fz-18 mb-20 d-block">
-                                    游戏一二章的概念曲，旋律我抄我自己，故不赘述（反正游戏情节也得写）
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 叶隙流光 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading叶隙流光">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse叶隙流光" aria-expanded="false" aria-controls="collapse叶隙流光">
-                                《叶隙流光》
-                            </button>
-                        </h2>
-                        <div id="collapse叶隙流光" class="accordion-collapse collapse" aria-labelledby="heading叶隙流光" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div>
-                                    <audio controls>
-                                        <source src="/static/music/2_叶隙流光.mp3" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>
-                                </div>
-                                <div class="ptext fz-18 mb-20 d-block">
-                                    想念儿时的金色庭院，墨绿肥厚的叶子中间阳光穿过，叶影斑驳。灰黄的墙边，懒洋洋趴满一片的爬山虎，猫儿在墙角蜷缩着，背上的毛随风起伏。那时的夏天，是自由；如今，是离别。(*´_ゝ｀)<br>
-                                    p.s.和弦用的最成功的一集
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 日疡 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading日疡">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse日疡" aria-expanded="false" aria-controls="collapse日疡">
-                                《日疡》
-                            </button>
-                        </h2>
-                        <div id="collapse日疡" class="accordion-collapse collapse" aria-labelledby="heading日疡" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div>
-                                    <audio controls>
-                                        <source src="/static/music/1_日疡.mp3" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>
-                                </div>
-                                <div class="ptext fz-18 mb-20 d-block">
-                                    死去的太阳下，昏黄的天空和燥热的空气，无尽的柏油路，一摞摞的工厂。少女在终末的世界里，不知驶向何方。
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 石泪 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading石泪">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse石泪" aria-expanded="false" aria-controls="collapse石泪">
-                                《石泪》
-                            </button>
-                        </h2>
-                        <div id="collapse石泪" class="accordion-collapse collapse" aria-labelledby="heading石泪" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div>
-                                    <audio controls>
-                                        <source src="/static/music/3_石像.mp3" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>
-                                </div>
-                                <div class="ptext fz-18 mb-20 d-block">
-                                    英勇的，歌颂的，神圣的，雕像。直到千年后，大雨冲刷着死去的城，石头留下了泪。
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 死雨之城 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading死雨之城">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse死雨之城" aria-expanded="false" aria-controls="collapse死雨之城">
-                                《死雨之城》
-                            </button>
-                        </h2>
-                        <div id="collapse死雨之城" class="accordion-collapse collapse" aria-labelledby="heading死雨之城" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div>
-                                    <audio controls>
-                                        <source src="/static/music/死雨之城.mp3" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>
-                                </div>
-                                <div class="ptext fz-18 mb-20 d-block">
-                                    城似了
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 源雨之城 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading源雨之城">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse源雨之城" aria-expanded="false" aria-controls="collapse源雨之城">
-                                《源雨之城》
-                            </button>
-                        </h2>
-                        <div id="collapse源雨之城" class="accordion-collapse collapse" aria-labelledby="heading源雨之城" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div>
-                                    <audio controls>
-                                        <source src="/static/music/源雨之城.mp3" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>
-                                </div>
-                                <div class="ptext fz-18 mb-20 d-block">
-                                    城还活着的时候
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 孤之城 云之巅 雾之夜 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading孤之城">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse孤之城" aria-expanded="false" aria-controls="collapse孤之城">
-                                《孤之城 云之巅 雾之夜》
-                            </button>
-                        </h2>
-                        <div id="collapse孤之城" class="accordion-collapse collapse" aria-labelledby="heading孤之城" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div>
-                                    <audio controls>
-                                        <source src="/static/music/2_孤之城 云之巅 雾之夜.mp3" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>
-                                </div>
-                                <div class="ptext fz-18 mb-20 d-block">
-                                    夜的云顶，月透云纱染虹晕。国庆守寡，落寞。被迫成为丑角的神明，不知曾是否流过落寞的泪。
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-             </div>
-                <!-- 结束 Accordion 组件 -->
-            </div>
-        </div>
-    </section>
-
-    <!-- 引入 Bootstrap JS 和依赖的 jQuery 和 Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
