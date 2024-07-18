@@ -604,7 +604,6 @@
                     <thead>
                         <tr>
                             <th>标题</th>
-                            <th>描述</th>
                             <th>操作</th>
                         </tr>
                     </thead>
@@ -668,20 +667,22 @@
 
             for (var i = start; i < end && i < data.length; i++) {
                 var item = data[i];
-                var dropdownId = 'dropdownMenu' + i;
                 var row = `<tr>
                     <td>${item.title}</td>
                     <td>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${i}" data-bs-toggle="dropdown" aria-expanded="false">
-                                描述
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton${i}">
-                                <li>${item.description}</li>
-                            </ul>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${i}" aria-expanded="false" aria-controls="collapse${i}">
+                            详情
+                        </button>
+                        <div class="collapse" id="collapse${i}">
+                            <div class="card card-body">
+                                ${item.description}
+                                <audio controls>
+                                    <source src="${item.url}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
                         </div>
                     </td>
-                    <td><audio controls><source src="${item.url}" type="audio/mpeg">Your browser does not support the audio element.</audio></td>
                 </tr>`;
                 tableBody.innerHTML += row;
             }
@@ -724,8 +725,7 @@
         updatePagination();
     </script>
 </body>
-</html>
- 
+</html> 
 
 
 
