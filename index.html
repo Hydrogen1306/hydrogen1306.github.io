@@ -572,7 +572,7 @@
     </div>
     <!--<< text slide v2 >>-->
     <!--<< 自己的音乐 >>-->
-
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     <!DOCTYPE html>
     <html lang="zh">
     <head>
@@ -626,134 +626,7 @@
                 </nav>
             </div>
         </section>
-
-        <!-- 引入Bootstrap Bundle JS (包含Popper) -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            var data = [
-                {
-                    title: "《坤和坎》",
-                    description: "游戏一二章的概念曲，旋律我抄我自己，故不赘述（反正游戏情节也得写）",
-                    url: "/static/music/2_坤.mp3"
-
-                },
-                {
-                    title: "《叶隙流光》",
-                    description: "想念儿时的金色庭院，墨绿肥厚的叶子中间阳光穿过，叶影斑驳。<br>灰黄的墙边，懒洋洋趴满一片的爬山虎，猫儿在墙角蜷缩着，背上的毛随风起伏。那时的夏天，是自由；如今，是离别。(*´_ゝ｀)<br>p.s.和弦用的最成功的一集",
-                    url: "/static/music/2_叶隙流光.mp3"
-                }
-            ];
-
-            var currentPage = 1;
-            var itemsPerPage = 5;
-
-            function displayMedia(mediaItems) {
-                return mediaItems.map(item => {
-                    switch (item.type) {
-                        case 'image':
-                            return `<img src="${item.url}" alt="${item.title}" style="width: 100px; height: auto; margin-right: 5px;">`;
-                        case 'audio':
-                            return `<audio controls style="margin-right: 5px;">
-                                           <source src="${item.url}" type="audio/mpeg">
-                                           Your browser does not support the audio element.
-                                         </audio>`;
-                        default:
-                            return '';
-                    }
-                }).join('');
-            }
-
-            function displayTable() {
-                var start = (currentPage - 1) * itemsPerPage;
-                var end = Math.min(start + itemsPerPage, data.length);
-                var tableBody = document.getElementById('tableBody');
-                tableBody.innerHTML = '';
-
-                for (var i = start; i < end; i++) {
-                    var item = data[i];
-                    var mediaHtml = displayMedia(item.media);
-                    var row = `
-                            <tr>
-                                <td>${item.title}</td>
-                                <td>${mediaHtml}</td>
-                                <td><button class="btn btn-primary" data-bs-toggle="collapse" data-target="#collapse${i}" aria-expanded="false" aria-controls="collapse${i}">详情</button>
-                                    <div class="collapse" id="collapse${i}">
-                                        <div class="card card-body">${item.description}</div>
-                                    </div>
-                                </td>
-                            </tr>
-                        `;
-                    tableBody.innerHTML += row;
-                }
-            }
-
-            function updatePagination() {
-                var pagination = document.getElementById('pagination');
-                var prevPage = document.getElementById('prevPage');
-                var nextPage = document.getElementById('nextPage');
-                var totalPages = Math.ceil(data.length / itemsPerPage);
-
-                if (currentPage > 1) {
-                    prevPage.classList.remove('disabled');
-                } else {
-                    prevPage.classList.add('disabled');
-                }
-
-                if (currentPage < totalPages) {
-                    nextPage.classList.remove('disabled');
-                } else {
-                    nextPage.classList.add('disabled');
-                }
-            }
-
-            document.getElementById('prevPage').addEventListener('click', function () {
-                if (currentPage > 1) {
-                    currentPage--;
-                    displayTable();
-                    updatePagination();
-                }
-            });
-
-            document.getElementById('nextPage').addEventListener('click', function () {
-                if (currentPage < Math.ceil(data.length / itemsPerPage)) {
-                    currentPage++;
-                    displayTable();
-                    updatePagination();
-                }
-            });
-
-            displayTable();
-            updatePagination();
-        </script>
-    </body>
-</html>
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 确保 Bootstrap 的 CSS 链接正确 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* 设置整个页面的背景图片 */
-        body {
-            background-image: url('image.jpg'); /* 替换为你的图片路径 */
-            background-size: cover; /* 背景图片覆盖整个页面 */
-            background-repeat: no-repeat; /* 背景图片不重复 */
-            background-position: center center; /* 背景图片居中显示 */
-            background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
-        }
-
-        /* 确保内容在背景图片上可读 */
-        .award__section, .table-responsive, .table, .pagination {
-            background-color: rgba(255, 255, 255, 0.8); /* 轻微透明，以便背景图片可见 */
-            color: #333; /* 确保文本颜色与背景对比度高 */
-        }
-    </style>
-    <title>响应式分页表格</title>
-</head>
-<body>
-    <section class="award__section">
+        <section class="award__section">
         <div class="container">
             <span class="table__title" style="font-size: 32px; font-weight: bold; color:cyan;">
                 自己摸的钢琴
@@ -931,6 +804,134 @@
         displayTable();
         updatePagination();
     </script>
+        <!-- 引入Bootstrap Bundle JS (包含Popper) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            var data = [
+                {
+                    title: "《坤和坎》",
+                    description: "游戏一二章的概念曲，旋律我抄我自己，故不赘述（反正游戏情节也得写）",
+                    url: "/static/music/2_坤.mp3"
+
+                },
+                {
+                    title: "《叶隙流光》",
+                    description: "想念儿时的金色庭院，墨绿肥厚的叶子中间阳光穿过，叶影斑驳。<br>灰黄的墙边，懒洋洋趴满一片的爬山虎，猫儿在墙角蜷缩着，背上的毛随风起伏。那时的夏天，是自由；如今，是离别。(*´_ゝ｀)<br>p.s.和弦用的最成功的一集",
+                    url: "/static/music/2_叶隙流光.mp3"
+                }
+            ];
+
+            var currentPage = 1;
+            var itemsPerPage = 5;
+
+            function displayMedia(mediaItems) {
+                return mediaItems.map(item => {
+                    switch (item.type) {
+                        case 'image':
+                            return `<img src="${item.url}" alt="${item.title}" style="width: 100px; height: auto; margin-right: 5px;">`;
+                        case 'audio':
+                            return `<audio controls style="margin-right: 5px;">
+                                           <source src="${item.url}" type="audio/mpeg">
+                                           Your browser does not support the audio element.
+                                         </audio>`;
+                        default:
+                            return '';
+                    }
+                }).join('');
+            }
+
+            function displayTable() {
+                var start = (currentPage - 1) * itemsPerPage;
+                var end = Math.min(start + itemsPerPage, data.length);
+                var tableBody = document.getElementById('tableBody');
+                tableBody.innerHTML = '';
+
+                for (var i = start; i < end; i++) {
+                    var item = data[i];
+                    var mediaHtml = displayMedia(item.media);
+                    var row = `
+                            <tr>
+                                <td>${item.title}</td>
+                                <td>${mediaHtml}</td>
+                                <td><button class="btn btn-primary" data-bs-toggle="collapse" data-target="#collapse${i}" aria-expanded="false" aria-controls="collapse${i}">详情</button>
+                                    <div class="collapse" id="collapse${i}">
+                                        <div class="card card-body">${item.description}</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        `;
+                    tableBody.innerHTML += row;
+                }
+            }
+
+            function updatePagination() {
+                var pagination = document.getElementById('pagination');
+                var prevPage = document.getElementById('prevPage');
+                var nextPage = document.getElementById('nextPage');
+                var totalPages = Math.ceil(data.length / itemsPerPage);
+
+                if (currentPage > 1) {
+                    prevPage.classList.remove('disabled');
+                } else {
+                    prevPage.classList.add('disabled');
+                }
+
+                if (currentPage < totalPages) {
+                    nextPage.classList.remove('disabled');
+                } else {
+                    nextPage.classList.add('disabled');
+                }
+            }
+
+            document.getElementById('prevPage').addEventListener('click', function () {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayTable();
+                    updatePagination();
+                }
+            });
+
+            document.getElementById('nextPage').addEventListener('click', function () {
+                if (currentPage < Math.ceil(data.length / itemsPerPage)) {
+                    currentPage++;
+                    displayTable();
+                    updatePagination();
+                }
+            });
+
+            displayTable();
+            updatePagination();
+        </script>
+    </body>
+</html>
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 确保 Bootstrap 的 CSS 链接正确 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 设置整个页面的背景图片 */
+        body {
+            background-image: url('image.jpg'); /* 替换为你的图片路径 */
+            background-size: cover; /* 背景图片覆盖整个页面 */
+            background-repeat: no-repeat; /* 背景图片不重复 */
+            background-position: center center; /* 背景图片居中显示 */
+            background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
+        }
+
+        /* 确保内容在背景图片上可读 */
+        .award__section, .table-responsive, .table, .pagination {
+            background-color: rgba(255, 255, 255, 0.8); /* 轻微透明，以便背景图片可见 */
+            color: #333; /* 确保文本颜色与背景对比度高 */
+        }
+    </style>
+    <title>响应式分页表格</title>
+</head>
+<body>
+    <s 
 </body>
 </html>
 
