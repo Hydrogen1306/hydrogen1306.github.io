@@ -962,41 +962,102 @@
 
           
         <body>
-
-            <div class="custom__hover" onclick="showPasswordBox()">
-                 
-                    <span class="button">
-                        <i class="bi bi-arrow-up-right"></i>
-                        <span class="textmore">
-                            里世界
-                        </span>
-                    </span>
-                
+            <h4>
+                時覺浮雲，飄浮無依。氤氳夕暉，稍漸西沉。<br>
+                馥郁飛霙，光落小徑。澄澈霽月，我心戀之。<br>
+                群花凋零，長空慾曉。未至思緒，盡復徒勞。<br>
+                迎面逆風，萬年須臾。烈烈情愫，終有其失。<br>
+                成對鴛鴦，亦來嗤嘲。煢煢籠鳥，可笑甚矣。<br>
+                五月雨詩，淅瀝未絕。悄然長空，哀婉傳唱。<br>
+                即或仰之，星亦不憐。唯留挽歌，尚遺殘響。<br>
+                倘若塵世，猶然絢麗。我所思爾，安能歸來。<br>
+                憂而再鬱，憂又更鬱。當知此物，囈語所爲。<br>
+                淚似梅雨，泣時濡袖。自言戲語，豈可通達。<br>
+                即或不視，誠然難堪。皓月西斜，不肯留駐。<br>
+                不見月夜，何以戀空。夢中之夢，何其無常。<br>
+                敢求相語，旦暮亦可。恍惚寢言，徒然迴響。<br>
+                一行白鷺，亦作譏誚。蒙昧愚鴉，憍慢甚矣。<br>
+                因既起奏，濫觴旋律。直迄終焉，可以伴奏。<br>
+                曲之完極，無須臻之。悲愁無消，空勞心堂。<br>
+                縱然塵世，猶然絢麗。我所思爾，定無回首。<br>
+                饑寒劣心，瘢痕累累。當知此物，囈語所爲。<br>
+                嗟爾嗚呼，勁風烈矣。可想今宵，寒意拂肌。<br>
+                遙遙漸傳，讚頌之聲。入耳之時，皆作朦朧。<br>
+                山間熛風，上下亦起。焉攜此辭，帶而告之。<br>
+                俄而驚寤，復耽沉夢。只留痛楚，愈消愈漲。<br>
+                放眼遠眺，花盡飄落。我所思爾，更甚皎潔。<br>
+                縱然囁囀，不爲意趣。當知此物，囈語所爲。<br>
+            </h4>
+            <h4>
+                花落，鸟散，风萧，月幽。
+            </h4>
+            <div id="startScreen">
+                <button id="startButton">开始回答问题</button>
             </div>
 
-            <!-- 密码输入框 -->
-            <div class="password-box" id="passwordBox">
-                <input type="password" id="passwordInput" placeholder="请输入密码">
-                <button onclick="checkPassword()">提交</button>
+            <div id="questionContainer" style="display: none;">
+                <p id="question"></p>
+                <input type="text" id="answerInput" placeholder="请输入你的答案">
+                <button onclick="checkAnswer()">提交答案</button>
+                <p id="message"></p>
             </div>
 
             <script>
-                // 显示密码输入框
-                function showPasswordBox() {
-                    document.getElementById('passwordBox').style.display = 'block';
+                const questions = [
+                    { question: "海错靡音", answer: "倘若塵世猶然絢麗" },
+                    { question: "...", answer: "花鸟风月" }, // 这里假设第二个问题已知
+                    { question: "漫天血染日沉沦", answer: "Sunset" }
+                ];
+                let currentQuestionIndex = 0; // 当前问题索引
+
+                // 显示问题函数
+                function displayQuestion() {
+                    const questionElement = document.getElementById('question');
+                    const messageElement = document.getElementById('message');
+                    const question = questions[currentQuestionIndex].question;
+
+                    questionElement.textContent = question || '未知问题'; // 如果问题为空，显示“未知问题”
+                    messageElement.textContent = ''; // 清空消息
                 }
-                 
-                // 检查密码
-                function checkPassword() {
-                    var password = document.getElementById('passwordInput').value;
-                    if (password === '282003') {
-                        window.location.href = 'koishi1306.space/inner-details'; // 输入正确密码后跳转
+
+                // 检查答案函数
+                function checkAnswer() {
+                    const answerInput = document.getElementById('answerInput');
+                    const expectedAnswer = questions[currentQuestionIndex].answer;
+                    const messageElement = document.getElementById('message');
+
+                    if (answerInput.value.trim() === expectedAnswer) {
+                        // 答案正确
+                        answerInput.value = ''; // 清空输入框
+                        currentQuestionIndex++; // 移动到下一个问题
+                        if (currentQuestionIndex < questions.length) {
+                            // 如果还有问题，显示下一个问题
+                            displayQuestion();
+                        } else {
+                            // 所有问题回答完毕，执行跳转
+                            alert('所有问题都回答正确，正在跳转...');
+                            window.location.href = 'koishi1306.space/inner'; // 跳转到目标网页
+                        }
                     } else {
-                        alert('密码错误！');
+                        // 答案错误
+                        messageElement.textContent = '答案不正确，请再试一次。';
                     }
                 }
+
+                // 开始回答问题函数
+                function startQuestions() {
+                    const startScreen = document.getElementById('startScreen');
+                    const questionContainer = document.getElementById('questionContainer');
+
+                    startScreen.style.display = 'none'; // 隐藏开始屏幕
+                    questionContainer.style.display = 'block'; // 显示问题容器
+                    displayQuestion(); // 显示第一个问题
+                }
+
+                // 给开始按钮添加点击事件
+                document.getElementById('startButton').addEventListener('click', startQuestions);
             </script>
-    </div>
+</div>
 </section>
 <!--<< project one >>-->
 
