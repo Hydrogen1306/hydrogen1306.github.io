@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <!--<< Required meta tags >>-->
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!--<< Title >>-->
-   <title>Hydrogen1306s - Personal Portfolio Template</title>
-   <!--<< Favcion >>-->
-   
-   <!--<< Bootstrap min.css >>-->
-   <link rel="stylesheet" href="static/css/bootstrap.min.css">
-   <!--<< Aos animation css >>-->
-   <link rel="stylesheet" href="static/css/aos.css">
-   <!--<< Main.css >>-->
-   <link rel="stylesheet" href="static/css/main.css">
+    <!--<< Required meta tags >>-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<< Title >>-->
+    <title>Hydrogen1306s - Personal Portfolio Template</title>
+    <!--<< Favcion >>-->
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <!--<< Aos animation css >>-->
+    <link rel="stylesheet" href="static/css/aos.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="static/css/main.css">
+    <style>
+        /* 添加一些基本样式 */
+        .custom__hover {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .password-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: white;
+            border: 1px solid black;
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
 
@@ -931,28 +949,54 @@
 </html>
 <!--<< project one >>-->
 <section class="project__section pt-120 pb-120" id="prot">
-   <div class="container">
-      <div class="project__head text-center">
-         <span class="common__sub" data-aos="fade-down" data-aos-duration="1000">
-           Complete Project 
-         </span>
-         <h2 class="fw-500" data-aos="fade-down" data-aos-duration="2000">
-            Look at my portfolio and give me 
-            your feedback
-         </h2>
-      </div>
-       
-      <div class="custom__hover">
-         <a href="protfolio-details.html" class="hover__circle mauto" data-aos="zoom-out-down" data-aos-duration="2000">
-            <span class="box">
-               <i class="bi bi-arrow-up-right"></i>
-               <span class="textmore"> 
-                  Click More Work
-               </span>
+    <div class="container">
+        <div class="project__head text-center">
+            <span class="common__sub" data-aos="fade-down" data-aos-duration="1000">
+                Complete Project
             </span>
-         </a>
-      </div>
-   </div>
+            <h2 class="fw-500" data-aos="fade-down" data-aos-duration="2000">
+                Look at my portfolio and give me
+                your feedback
+            </h2>
+        </div>
+
+          
+        <body>
+
+            <div class="custom__hover" onclick="showPasswordBox()">
+                <a href="protfolio-details.html" class="hover__circle mauto" data-aos="zoom-out-down" data-aos-duration="2000">
+                    <span class="box">
+                        <i class="bi bi-arrow-up-right"></i>
+                        <span class="textmore">
+                            里世界
+                        </span>
+                    </span>
+                </a>
+            </div>
+
+            <!-- 密码输入框 -->
+            <div class="password-box" id="passwordBox">
+                <input type="password" id="passwordInput" placeholder="请输入密码">
+                <button onclick="checkPassword()">提交</button>
+            </div>
+
+            <script>
+                // 显示密码输入框
+                function showPasswordBox() {
+                    document.getElementById('passwordBox').style.display = 'block';
+                }
+
+                // 检查密码
+                function checkPassword() {
+                    var password = document.getElementById('passwordInput').value;
+                    if (password === '282003') {
+                        window.location.href = 'koishi1306.space/inner'; // 输入正确密码后跳转
+                    } else {
+                        alert('密码错误！');
+                    }
+                }
+            </script>
+    </div>
 </section>
 <!--<< project one >>-->
 
