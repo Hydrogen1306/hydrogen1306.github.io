@@ -163,7 +163,73 @@
                       后面有空再写nmd（长的很）
                      </p>
                   </div>
-                   
+                   <!--<< blog >>-->
+<section class="blog__bsection pb-120">
+   <div class="container">
+      <div class="row g-4">
+         <div class="col-lg-8">
+            <div class="blog__bleft__wrapper">
+               <div class="blog__bitem" data-aos="fade-up" data-aos-duration="1000">
+                  <p class="fz-24 pra ttext__one mb-30">
+                     宇宙彼端的落日
+                  </p>
+                  <p class="fz-16 pra ttext__one mb-30">
+                     后面有空再写nmd
+                  </p>
+               </div>
+                
+               <div class="thumb mb-30">
+                  <p class="fz-24 pra ttext__one mb-30">
+                     星降
+                  </p>
+                  <p class="fz-16 pra ttext__one mb-30">
+                     后面有空再写nmd（长的很）
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-4">
+            <div class="blog__bright__bar">
+               <!-- 插入的新部分开始 -->
+               <section class="novel-reader">
+                  <h4 class="novel-title">阅读小说</h4>
+                  <div class="novel-chapters">
+                     <button class="novel-chapter" onclick="loadChapter(1)">第一章</button>
+                     <button class="novel-chapter" onclick="loadChapter(2)">第二章</button>
+                     <button class="novel-chapter" onclick="loadChapter(3)">第三章</button>
+                     <button class="novel-chapter" onclick="loadChapter(4)">第四章</button>
+                     <button class="novel-chapter" onclick="loadChapter(5)">第五章</button>
+                  </div>
+                  <div class="novel-content" id="novel-content">
+                     <!-- 小说内容将在这里显示 -->
+                  </div>
+               </section>
+               <!-- 插入的新部分结束 -->
+               
+               <!-- 其他部分省略... -->
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--<< blog >>-->  
+
+<script>
+// 假设的小说章节内容
+var chapters = {
+  '1': '<p>在一个遥远的星系，太阳缓缓落下，余晖洒在了荒凉的星球表面。</p>',
+  '2': '<p>探险队踏上了这片未知的土地，他们的目标是寻找传说中的古老文明。</p>',
+  '3': '<p>经过数周的探索，他们发现了一个隐藏在地下的城市，里面充满了奇异的科技。</p>',
+  '4': '<p>城市中心有一个巨大的图书馆，里面记录了这个文明的历史和秘密。</p>',
+  '5': '<p>探险队意识到，他们发现的不仅仅是一个城市，而是一个全新的世界。</p>'
+};
+
+// 加载章节内容的函数
+function loadChapter(chapterNumber) {
+  var contentDiv = document.getElementById('novel-content');
+  contentDiv.innerHTML = chapters[chapterNumber.toString()];
+}
+</script>
          <div class="col-lg-4">
            <div class="blog__bright__bar">
                <div class="scope__item mb__cus60">
